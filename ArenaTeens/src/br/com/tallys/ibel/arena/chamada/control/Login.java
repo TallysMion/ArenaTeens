@@ -1,4 +1,4 @@
-package br.com.tallys.ibel.arena.chamada;
+package br.com.tallys.ibel.arena.chamada.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
