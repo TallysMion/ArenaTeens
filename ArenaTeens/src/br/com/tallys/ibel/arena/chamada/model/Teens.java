@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Teens extends User {
 
-	private Ga grupo;
+	private GA ga;
 	private LinkedList<Relatorio> relatorios;
 	
 	//Desenvolver Métodos

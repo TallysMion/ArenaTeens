@@ -2,7 +2,7 @@ package br.com.tallys.ibel.arena.chamada.model;
 
 public class Sublider extends User {
 
-	private GA grupo;
+	private GA ga;
 	
 	//Desenvolver Métodos
 	
