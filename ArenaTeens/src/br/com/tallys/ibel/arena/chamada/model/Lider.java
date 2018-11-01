@@ -9,6 +9,17 @@ public class Lider extends User{
 	private String Telefone;
 	private LinkedList<Teen> teens;
 	
+	@Override
+	public String constructHTML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String toHTML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 
 }

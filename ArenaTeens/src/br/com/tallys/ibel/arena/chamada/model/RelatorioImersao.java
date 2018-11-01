@@ -1,18 +1,18 @@
 package br.com.tallys.ibel.arena.chamada.model;
 
-public class RelatorioImersão {
+public class RelatorioImersao {
 
-	private int id;
 	private int teen;
+	private String data;
 	private boolean presenca;
 	private int total;
 	
 
 	
-	public RelatorioImersão(int id, int teen, boolean presenca) {
+	public RelatorioImersao(int teen,String data, boolean presenca) {
 		super();
-		this.id = id;
 		this.teen = teen;
+		this.data = data;
 		this.presenca = presenca;
 		this.total = presenca?Constantes.PRESENCA_IMERSAO:0;
 	}

@@ -9,7 +9,7 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/annotations-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/catalina.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/catalina.jar" sourcepath="C:/Users/tally/.m2/repository/org/apache/tomcat/tomcat-catalina/9.0.12/tomcat-catalina-9.0.12-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/catalina-ant.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/catalina-ha.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/catalina-storeconfig.jar"/>
@@ -20,7 +20,7 @@
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/jasper-el.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/jaspic-api.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/jsp-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/servlet-api.jar" sourcepath="C:/Users/tally/.m2/repository/org/apache/tomcat/tomcat-servlet-api/9.0.12/tomcat-servlet-api-9.0.12-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/tomcat-api.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/tomcat-coyote.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/tomcat-dbcp.jar"/>
@@ -34,5 +34,10 @@
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/tomcat-util-scan.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/tomcat-websocket.jar"/>
 	<classpathentry kind="lib" path="C:/Users/tally/Google Drive/Sincronia/UEL/-Notas/Lab/apache-tomcat-9.0.12/lib/websocket-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tally/Downloads/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tally/Downloads/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre10.jar"/>
+	<classpathentry kind="lib" path="testes/dskaster-bd2018-43ae5b3def4c/web/WEB-INF/lib/gson-2.3.jar"/>
+	<classpathentry kind="lib" path="testes/dskaster-bd2018-43ae5b3def4c/web/WEB-INF/lib/javax.servlet.jsp.jstl-1.2.1.jar"/>
+	<classpathentry kind="lib" path="testes/dskaster-bd2018-43ae5b3def4c/web/WEB-INF/lib/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

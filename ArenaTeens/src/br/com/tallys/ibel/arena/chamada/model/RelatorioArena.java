@@ -12,13 +12,15 @@ public class RelatorioArena {
 	private int versiculos;
 	private int extras;
 	private int total;
+	private boolean fechamentoBim;
+	private boolean fechamentoAnual;
 	
 	public String toHTML() {
 		return null;		
 	}
 
 	public RelatorioArena(String data, int teen, boolean presenca, boolean pontualidade, boolean meditacao,
-			boolean anotSexta, boolean anotDomingo, int versiculos, int extras) {
+			boolean anotSexta, boolean anotDomingo, int versiculos, int extras, boolean fechamentoBim, boolean fechamentoAnual) {
 		super();
 		this.total = 0;
 		this.data = data;
@@ -28,8 +30,10 @@ public class RelatorioArena {
 		this.meditacao = meditacao;			this.total += meditacao?	Constantes.MEDITACAO			:0;
 		this.anotSexta = anotSexta;			this.total += anotSexta?	Constantes.ANOTACAO_SEXTA		:0;
 		this.anotDomingo = anotDomingo;		this.total += anotDomingo?	Constantes.ANOTACAO_DOMINGO		:0;
-		this.versiculos = versiculos;		this.total += versiculos*	Constantes.CADA_VERSICULO;
-		this.extras = extras;				this.total += extras;		
+		this.versiculos = versiculos;		this.total += meditacao?	versiculos*Constantes.CADA_VERSICULO:0;
+		this.extras = extras;				this.total += extras;	
+		this.fechamentoAnual = fechamentoAnual;
+		this.fechamentoBim = fechamentoBim;
 		
 	}
 	

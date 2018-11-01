@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.tallys.ibel.arena.chamada.Dao.UserDao;
+import br.com.tallys.ibel.arena.chamada.model.User;
+
 @WebServlet("/Login")
 public class Login extends HttpServlet{
 
@@ -19,11 +22,13 @@ public class Login extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		
 		//recupera login e senha
-		String Login = request.getParameter("login");
-		String Senha = request.getParameter("senha");
-		String page = "" + Login + " / " + Senha;//temporario
+		String login = request.getParameter("login");
+		String senha = request.getParameter("senha");
+		String page = "" + login + " / " + senha;//temporario
+		
 		
 		//chama função de login
+		User usuario = new UserDao().login(login, senha);
 		
 		//monta a pagina do usuario
 		
