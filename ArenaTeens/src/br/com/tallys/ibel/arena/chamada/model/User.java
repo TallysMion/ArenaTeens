@@ -9,6 +9,41 @@ public abstract class User {
 	private UserType tipo;
 	private int externalID;
 	
+	
+	
+	public User(String login, String senha, UserType tipo, int externalID) {
+		super();
+		this.login = login;
+		this.senha = senha;
+		this.tipo = tipo;
+		this.externalID = externalID;
+	}
+	
+	
+
+	public User() {
+		super();
+	}
+	
+	public static User Cadastrar(String login, String senha, UserType tipo, int externalID) {
+		User result;
+		switch(tipo) {
+			Lider:
+				result = new Lider();
+		break;
+			Sublider:
+				result = new Sublider();
+		break;
+			Teens:
+				result = new Teens();
+		break;
+		}
+		//Desenvolver**
+		
+	}
+
+
+
 	//Método de Login no Sistema
 	public User Login(String login, String senha) {
 		//encripta a senha
