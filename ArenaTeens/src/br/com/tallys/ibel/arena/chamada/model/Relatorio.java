@@ -14,7 +14,8 @@ public abstract class Relatorio {
 		this.pontuacao = pontuacao;
 	}
 	
-	public String toHTML () {
+	public String toHTML() {
+		return null;
 		//DESENVOLVER
 	}
 

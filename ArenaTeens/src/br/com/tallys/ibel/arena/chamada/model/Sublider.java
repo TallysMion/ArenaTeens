@@ -18,4 +18,10 @@ public class Sublider extends User {
 		return null;
 	}
 
+	@Override
+	public int getExtId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

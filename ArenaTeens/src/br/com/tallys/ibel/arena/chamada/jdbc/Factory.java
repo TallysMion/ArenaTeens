@@ -42,8 +42,8 @@ public class Factory {
             InputStream input = aux.getResourceAsStream(path);
             if(input == null) {
             	dbHost = "localhost";
-	            dbPort = "5432";
-	            dbName = "arenateens-chamada";
+	            dbPort = "3306";
+	            dbName = "ArenaTeens";
 	            dbUser = "root";
 	            dbPassword = "";
             }else {
@@ -65,7 +65,9 @@ public class Factory {
         Connection connection = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
+            
 
             readProperties();
   
@@ -76,7 +78,7 @@ public class Factory {
         } catch (ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
 
-            throw new ClassNotFoundException("Erro de conexão ao banco de dados.");
+            throw new ClassNotFoundException("Classe nao encontrada.");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
 

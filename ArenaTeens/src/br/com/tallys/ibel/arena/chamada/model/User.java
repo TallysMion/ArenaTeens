@@ -6,15 +6,17 @@ public abstract class User {
 	
 	private String login;
 	private String senha;
+	private String nome;
 	private UserType tipo;
 	private int externalID;
 	
 	
 	
-	public User(String login, String senha, UserType tipo, int externalID) {
+	public User(String login, String senha, String nome, UserType tipo, int externalID) {
 		super();
 		this.login = login;
 		this.senha = senha;
+		this.nome = nome;
 		this.tipo = tipo;
 		this.externalID = externalID;
 	}
@@ -25,20 +27,23 @@ public abstract class User {
 		super();
 	}
 	
-	public static User Cadastrar(String login, String senha, UserType tipo, int externalID) {
-		User result;
-		switch(tipo) {
-			Lider:
+	public static User Cadastrar(String login, String senha, String nome, UserType tipo, int externalID) {
+		User result = null;
+		switch(tipo){
+		case Lider:
 				result = new Lider();
 		break;
-			Sublider:
+		case Sublider:
 				result = new Sublider();
 		break;
-			Teens:
+		case Teen:
 				result = new Teens();
 		break;
 		}
 		//Desenvolver**
+		//recuperar o id de result
+		
+		return result;
 		
 	}
 
@@ -93,6 +98,9 @@ public abstract class User {
 	public boolean changePassword(String newPassword) {
 		return false;
 	}
+	
+	//Recupera o id do usuario
+	public abstract int getExtId();
 	
 	//Retorna a pagina do usuario
 	public abstract String mainPage();

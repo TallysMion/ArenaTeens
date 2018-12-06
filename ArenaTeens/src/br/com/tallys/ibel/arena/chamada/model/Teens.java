@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Teens extends User {
 
-	private Ga grupo;
+	private GA grupo;
 	private LinkedList<Relatorio> relatorios;
 	
 	//Desenvolver Métodos
@@ -19,6 +19,12 @@ public class Teens extends User {
 	public String toHTML() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int getExtId() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
