@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+
 public class Factory {
 	
     private static Factory instance = null;
@@ -17,6 +18,7 @@ public class Factory {
     private String dbName;
     private String dbUser;
     private String dbPassword;
+    private String dbInstanceName;
 
     public Factory() {
     }
@@ -30,35 +32,12 @@ public class Factory {
     }
 
     public void readProperties() throws IOException {
-        Properties properties = new Properties();
-
-        try {
-            String path = "jdbc/datasource.properties";
-            
-            //teste
-            new File(path);
-            
-            ClassLoader aux = this.getClass().getClassLoader();
-            InputStream input = aux.getResourceAsStream(path);
-            if(input == null) {
-            	dbHost = "localhost";
-	            dbPort = "3306";
-	            dbName = "ArenaTeens";
-	            dbUser = "root";
-	            dbPassword = "";
-            }else {
-	            properties.load(input);
-	            dbHost = properties.getProperty("host");
-	            dbPort = properties.getProperty("port");
-	            dbName = properties.getProperty("name");
-	            dbUser = properties.getProperty("user");
-	            dbPassword = properties.getProperty("password");
-            }
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
-
-            throw new IOException("Erro ao obter informações do banco de dados.");
-        }
+	 	dbHost = "localhost";
+	    dbPort = "3306";
+	    dbName = "arenateens";
+	    dbUser = "root";
+	    dbPassword = "";
+	    dbInstanceName = "arenateste-224811:southamerica-east1:arenateens";
     }
 
     public Connection getConnection() throws ClassNotFoundException, IOException, SQLException {
@@ -71,8 +50,9 @@ public class Factory {
 
             readProperties();
   
-          //String url = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
+//            String url = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
             String url = "jdbc:mysql://" + dbHost + "/" + dbName + "?useTimezone=true&serverTimezone=UTC";
+//            String url = String.format("jdbc:mysql://%s/%s?cloudSqlInstance=%s&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false",dbHost,	dbName, dbInstanceName);
             
             connection = DriverManager.getConnection(url, dbUser, dbPassword);
         } catch (ClassNotFoundException ex) {

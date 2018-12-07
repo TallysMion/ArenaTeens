@@ -31,13 +31,17 @@ public abstract class User {
 		User result = null;
 		switch(tipo){
 		case Lider:
-				result = new Lider();
+			//null -> arena
+				result = new Lider(login, senha, nome, tipo, externalID, null);
 		break;
 		case Sublider:
-				result = new Sublider();
+			//null -> ga
+				result = new Sublider(login, senha, nome, tipo, externalID, null);
 		break;
 		case Teen:
-				result = new Teens();
+			//1° null -> ga
+			//2° null -> relatorios
+				result = new Teens(login, senha, nome, tipo, externalID, null, null);
 		break;
 		}
 		//Desenvolver**

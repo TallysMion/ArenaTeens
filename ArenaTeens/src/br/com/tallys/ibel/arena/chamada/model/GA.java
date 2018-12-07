@@ -4,7 +4,8 @@ import java.util.LinkedList;
 
 public class GA {
 	
-	LinkedList<Sublider> sublideres;
-	LinkedList<Teens> teens;
+	private String nome; 
+	private LinkedList<Sublider> sublideres;
+	private LinkedList<Teens> teens;
 	
 }

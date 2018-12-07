@@ -2,6 +2,8 @@ package br.com.tallys.ibel.arena.chamada.model;
 
 import java.util.LinkedList;
 
+import br.com.tallys.ibel.arena.chamada.model.Enum.UserType;
+
 public class Teens extends User {
 
 	private GA grupo;
@@ -26,5 +28,13 @@ public class Teens extends User {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	public Teens(String login, String senha, String nome, UserType tipo, int externalID, GA grupo,
+			LinkedList<Relatorio> relatorios) {
+		super(login, senha, nome, tipo, externalID);
+		this.grupo = grupo;
+		this.relatorios = relatorios;
+	}
+	
 
 }

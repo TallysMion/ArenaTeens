@@ -2,6 +2,7 @@ package br.com.tallys.ibel.arena.chamada.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +29,15 @@ public class Login extends HttpServlet{
 		
 		
 		//chama função de login
-		User usuario = new UserDao().login(login, senha);
+		try {
+			User usuario = new UserDao().login(login, senha);
+			if(usuario == null) {
+				throw new Exception();
+			}
+			page = usuario.toHTML();
+		} catch (Exception e) {
+			page = "usuario não encontrado";//pagina Login -> usuario não encontrado
+		}
 		
 		//monta a pagina do usuario
 		
