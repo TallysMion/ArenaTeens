@@ -27,43 +27,6 @@ public abstract class User {
 		super();
 	}
 	
-	public static User Cadastrar(String login, String senha, String nome, UserType tipo, int externalID) {
-		User result = null;
-		switch(tipo){
-		case Lider:
-			//null -> arena
-				result = new Lider(login, senha, nome, tipo, externalID, null);
-		break;
-		case Sublider:
-			//null -> ga
-				result = new Sublider(login, senha, nome, tipo, externalID, null);
-		break;
-		case Teen:
-			//1° null -> ga
-			//2° null -> relatorios
-				result = new Teens(login, senha, nome, tipo, externalID, null, null);
-		break;
-		}
-		//Desenvolver**
-		//recuperar o id de result
-		
-		return result;
-		
-	}
-
-
-
-	//Método de Login no Sistema
-	public User Login(String login, String senha) {
-		//encripta a senha
-		//busca usuario e senha correspondente
-		//verifica o tipo do usuario
-		//recupera os dados do usuario
-		//instancia o objeto
-		//retorna o usuario		
-		return null;
-	}
-	
 	//Metodo de criptografia da senha
 	public static String encrypt(String user, String password) {
 	      String sign = user + password;
@@ -111,6 +74,7 @@ public abstract class User {
 	
 	//Retorna um HTML de referencia ao usuario
 	public abstract String toHTML();
+
 	
 
 }

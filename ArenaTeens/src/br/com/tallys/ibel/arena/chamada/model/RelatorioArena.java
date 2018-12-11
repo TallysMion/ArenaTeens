@@ -18,9 +18,9 @@ public class RelatorioArena extends Relatorio {
 	private static final int ptsAnotArena = 5;
 	private static final int ptsVersiculo = 2;
 	
-	public RelatorioArena (Teens pessoa, int pontuacao, boolean presenca, boolean meditacao,
+	public RelatorioArena (Fechamento fechamento, Teens pessoa, boolean presenca, boolean meditacao,
 			boolean pontualidade, boolean anotDomingo, boolean anotArena, int versiculos, int pontosExtras) {
-		super(relatorioType.relatorioArena, pessoa, 0);
+		super(relatorioType.relatorioArena, pessoa, 0, fechamento);
 		int pont = 0;
 		this.presenca = presenca; 
 		pont += presenca ? ptsPresenca:0;
@@ -37,6 +37,12 @@ public class RelatorioArena extends Relatorio {
 		this.pontosExtras = pontosExtras;
 		pont += pontosExtras;
 		this.setPontuacao(pont);
+	}
+
+	@Override
+	public String toHTML() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

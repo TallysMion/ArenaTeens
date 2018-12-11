@@ -2,7 +2,6 @@ package br.com.tallys.ibel.arena.chamada.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.tallys.ibel.arena.chamada.Dao.UserDao;
 import br.com.tallys.ibel.arena.chamada.model.User;
+import br.com.tallys.ibel.arena.chamada.utils.Codigo;
+import br.com.tallys.ibel.arena.chamada.utils.CodigoType;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet{
@@ -36,7 +37,7 @@ public class Login extends HttpServlet{
 			}
 			page = usuario.toHTML();
 		} catch (Exception e) {
-			page = "usuario não encontrado";//pagina Login -> usuario não encontrado
+			page = "usuario não encontrado - " + e.toString();//pagina Login -> usuario não encontrado
 		}
 		
 		//monta a pagina do usuario

@@ -6,18 +6,22 @@ public abstract class Relatorio {
 	private relatorioType tipo;
 	private Teens pessoa;
 	private int pontuacao;
+	
+	private boolean closed;
+	private Fechamento fechamento;
+	
 
-	public Relatorio (relatorioType tipo, Teens pessoa, int pontuacao) {
+	
+	public Relatorio(relatorioType tipo, Teens pessoa, int pontuacao, Fechamento fechamento) {
 		super();
 		this.tipo = tipo;
 		this.pessoa = pessoa;
 		this.pontuacao = pontuacao;
+		this.closed = fechamento==null?false:true;;
+		this.fechamento = fechamento;
 	}
-	
-	public String toHTML() {
-		return null;
-		//DESENVOLVER
-	}
+
+	public abstract String toHTML();
 
 	public int getPontuacao() {
 		return pontuacao;
@@ -32,5 +36,9 @@ public abstract class Relatorio {
 	
 	public Teens getPessoa() {
 		return pessoa;
+	}
+
+	public void setFechamento(Fechamento fechamento) {
+		this.fechamento = fechamento;
 	}
 }

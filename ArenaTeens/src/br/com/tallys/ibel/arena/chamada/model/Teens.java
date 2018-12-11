@@ -29,11 +29,18 @@ public class Teens extends User {
 		return 0;
 	}
 
-	public Teens(String login, String senha, String nome, UserType tipo, int externalID, GA grupo,
+	public Teens(String login, String senha, String nome, int externalID, GA grupo,
 			LinkedList<Relatorio> relatorios) {
-		super(login, senha, nome, tipo, externalID);
+		super(login, senha, nome, UserType.Teen, externalID);
 		this.grupo = grupo;
 		this.relatorios = relatorios;
+		if(this.relatorios == null) {
+			this.relatorios = new LinkedList<Relatorio>();
+		}
+	}
+
+	public void setGA(GA ga) {
+		this.grupo = ga;		
 	}
 	
 

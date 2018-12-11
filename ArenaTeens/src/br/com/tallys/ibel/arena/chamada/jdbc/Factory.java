@@ -1,12 +1,9 @@
 package br.com.tallys.ibel.arena.chamada.jdbc;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 
 public class Factory {
@@ -14,11 +11,13 @@ public class Factory {
     private static Factory instance = null;
 
     private String dbHost;
-    private String dbPort;
+    @SuppressWarnings("unused")
+	private String dbPort;
     private String dbName;
     private String dbUser;
     private String dbPassword;
-    private String dbInstanceName;
+    @SuppressWarnings("unused")
+	private String dbInstanceName;
 
     public Factory() {
     }

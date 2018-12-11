@@ -8,4 +8,10 @@ public class GA {
 	private LinkedList<Sublider> sublideres;
 	private LinkedList<Teens> teens;
 	
+	public void update(String nome, LinkedList<Sublider> sublds, LinkedList<Teens> teens) {
+		this.nome = nome;
+		this.sublideres = sublds;
+		this.teens = teens;		
+	}
+	
 }
