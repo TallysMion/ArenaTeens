@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width-device-width, initial-scale = 1, shrink-to-fit=no">
+	<title>Admin</title>
+	
+	
+	<style type="text/css">
+		.col-center{
+			float: none;
+			margin: 0 auto;
+		}
+	</style>
+	
+</head>
+<body class="p-3 mb-2 bg-dark text-white">
+	<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+					<form action="criar_ga" method="POST" data-toggle="validator" role="form" class="bootstrap-form" novalidate>
+		    			<div class="form-group">
+    						<label for="CadInput">Nome do GA:</label>
+    						<input type="text" name="nome_ga" class="form-control" id="cad_ga" placeholder="Nome" required> 
+  						</div>
+  						<div class="row w-100 p-3 col-center" >
+  							<div class="col">
+  								<input class="btn btn-primary" style="width: 100%" type="submit" value="Cadastrar" />
+  							</div>
+  							<div class="col">
+  								<a class="btn btn-primary" style="width: 100%" href="admin.html" role="button">Voltar</a>
+  							</div>
+  						</div>	
+					</form>
+				</div>
+			</div>
+	</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
