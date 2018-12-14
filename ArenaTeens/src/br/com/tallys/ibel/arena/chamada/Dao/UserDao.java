@@ -148,7 +148,13 @@ public class UserDao {
 		consult = "SELECT * FROM `usuario` WHERE usu_login=\'"+login+"\'";
 		Statement statement = connect.createStatement();
 		ResultSet resultSet = statement.executeQuery(consult);
-		int id = resultSet.getInt(0);
+		int id;
+		if(resultSet != null && resultSet.next()) {
+			id = resultSet.getInt(1);
+		}else {
+			id = -1;
+			return;
+		}
 		if(tipo==1) consult = "INSERT INTO `usu_sublider`(`subl_id`, `subl_codga`) VALUES (?,?)";
 		if(tipo==2) consult = "INSERT INTO `usu_teen`(`teen_id`, `teen_codga`) VALUES (?,?)";
 		

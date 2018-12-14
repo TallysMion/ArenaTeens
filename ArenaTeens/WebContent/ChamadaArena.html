@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width-device-width, initial-scale = 1, shrink-to-fit=no">
+	<title>Chamada</title>
+	
+	
+	<style type="text/css">
+		.col-center{
+			float: none;
+			margin: 0 auto;
+		}
+			.btn span.glyphicon {    			
+		opacity: 0;				
+	}
+	.btn.active span.glyphicon {				
+		opacity: 1;				
+	}
+	</style>
+	
+</head>
+<body class="p-3 mb-2 bg-dark text-white">
+	<div class="container">
+			<div class="row">
+				
+				<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+					<form action="ChamadaArena" method="POST" data-toggle="validator" role="form" class="bootstrap-form" novalidate>
+		    			
+		    			<ul class="list-group">
+  						
+			    			<li>
+				    			<div class="form-group">
+		    						<div class="row ml-1 sl-1">
+			    						<label for="CadInput">Nome do Teen:</label><br>
+			    					</div>
+			    					<div class="row">
+			    						<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="pres_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Presenca</span>
+											</label>
+										</div>
+										<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="med_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Meditacao</span>
+											</label>
+										</div>
+										<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="pont_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Pontualidade</span>
+											</label>
+										</div>
+									</div>
+									<div class="row">
+				    					<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="anot_domingo_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Anotacao Domingo</span>
+											</label>
+										</div>
+										<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="anot_arena_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Anotacao Arena</span>
+											</label>
+										</div>
+									</div>
+									<div class="row">
+				    					<div class="col">	
+				    						<label>Versiculos</label>
+				    						<input type="number" id="vers_id">
+										</div>
+										<div class="col">	
+				    						<label>Pontos Extras</label>
+				    						<input type="number" id="vers_id">
+										</div>
+									</div>							
+								</div>
+							</li>
+							
+							<li>
+				    			<div class="form-group">
+		    						<div class="row ml-1 sl-1">
+			    						<label for="CadInput">Nome do Teen:</label><br>
+			    					</div>
+			    					<div class="row">
+			    						<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="pres_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Presenca</span>
+											</label>
+										</div>
+										<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="med_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Meditacao</span>
+											</label>
+										</div>
+										<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="pont_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Pontualidade</span>
+											</label>
+										</div>
+									</div>
+									<div class="row">
+				    					<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="anot_domingo_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Anotacao Domingo</span>
+											</label>
+										</div>
+										<div class="col">	
+				    						<label class="custom-control custom-checkbox">
+											      <input type="checkbox" class="custom-control-input" id="anot_arena_id">
+											      <span class="custom-control-indicator"></span>
+											      <span class="custom-control-description">Anotacao Arena</span>
+											</label>
+										</div>
+									</div>
+									<div class="row">
+				    					<div class="col">	
+				    						<label>Versiculos</label>
+				    						<input type="number" id="vers_id">
+										</div>
+										<div class="col">	
+				    						<label>Pontos Extras</label>
+				    						<input type="number" id="vers_id">
+										</div>
+									</div>							
+								</div>
+							</li>
+							
+							
+							
+							
+							
+							
+							
+						</ul>
+						
+						
+  						<div class="row w-100 p-3 col-center" >
+  							<div class="col"><input class="btn btn-primary" style="width: 100%" type="submit" value="Confirmar" /></div>
+  							<div class="col"><a class="btn btn-primary" style="width: 100%" href="index.html" role="button">Cancelar</a></div>
+  						</div>	
+					</form>
+				</div>
+			</div>
+	</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ public class Codigo {
 	public Codigo(int id, CodigoType tipo, int extId) {
 		super();
 		this.id = id;
-		this.cod = this.idToCod(id);
+		this.cod = this.idToCod(tipo, extId);
 		this.tipo = tipo;
 		this.extId = extId;
 	}
@@ -29,8 +29,8 @@ public class Codigo {
 
 
 
-	public String idToCod(int id) {
-		String key = User.encrypt("H", "T");
+	public String idToCod(CodigoType tipo, int extId) {
+		String key = User.encrypt(tipo.toString(), "T");
 		String base = new Integer(id).toString();
 		String cod = User.encrypt(base, key);
 		String result = "";
@@ -58,6 +58,13 @@ public class Codigo {
 
 	public int getExtId() {
 		return extId;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Codigo [id=" + id + ", cod=" + cod + ", tipo=" + tipo + ", extId=" + extId + "]";
 	}
 	
 	

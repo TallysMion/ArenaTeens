@@ -23,8 +23,9 @@ public class fechamentoDao {
 		
 		Date inic = resultSet.getDate(2);
 		Date end  = resultSet.getDate(3);
-		relatorioType tipo = resultSet.getInt(4)==0?relatorioType.relatorioArena:relatorioType.relatorioImersao;
-		LinkedList<Relatorio> relatorios = new RelatorioDao().getRelatoriosFechamento(idFech);
+		int tipo = resultSet.getInt(4)==0?0:1;
+		LinkedList<Relatorio> relatorios;
+		relatorios = tipo==0?new RelatorioDao().getRelatoriosFechamento(idFech):new RelatorioDao().getRelatoriosFechamentoBim(idFech);
 		
 		Fechamento result = new Fechamento();
 		for(int i=0; i<relatorios.size(); i++) {
@@ -35,5 +36,7 @@ public class fechamentoDao {
 		
 		return result;
 	}
+
+
 
 }

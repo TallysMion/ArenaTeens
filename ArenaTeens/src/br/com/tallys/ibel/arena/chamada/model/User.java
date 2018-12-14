@@ -6,7 +6,7 @@ public abstract class User {
 	
 	private String login;
 	private String senha;
-	private String nome;
+	protected String nome;
 	private UserType tipo;
 	private int externalID;
 	
@@ -74,6 +74,10 @@ public abstract class User {
 	
 	//Retorna um HTML de referencia ao usuario
 	public abstract String toHTML();
+
+
+
+	public abstract Object getType();
 
 	
 

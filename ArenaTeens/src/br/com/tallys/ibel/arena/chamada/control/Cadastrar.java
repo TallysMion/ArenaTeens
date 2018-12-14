@@ -87,26 +87,28 @@ public class Cadastrar  extends HttpServlet{
 						extId = 0;
 						tipo = UserType.Lider;
 						break;
-		case Sublider:  try {
+		case Sublider:  
+			try {
 				ga = GADao.getGA(cd.getExtId());
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-						result = new Sublider(login, encript, nome, cd.getExtId(), ga);
-						extId = cd.getExtId();
-						tipo = UserType.Sublider;
-						break;
-		case Teen: 		try {
+			result = new Sublider(login, encript, nome, cd.getExtId(), ga);
+			extId = cd.getExtId();
+			tipo = UserType.Sublider;
+			break;
+		case Teen: 		
+			try {
 				ga = GADao.getGA(cd.getExtId());
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-						result = new Teens(login, encript, nome, cd.getExtId(), ga,  null);
-						extId = cd.getExtId();
-						tipo = UserType.Teen;
-						break;
+			result = new Teens(login, encript, nome, cd.getExtId(), ga,  null);
+			extId = cd.getExtId();
+			tipo = UserType.Teen;
+			break;
 		}
 		
 		try {
@@ -116,7 +118,7 @@ public class Cadastrar  extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		out.println("Cadastro Completo");
+		response.sendRedirect("login");
 		
 	}
 

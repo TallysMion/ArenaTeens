@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.tallys.ibel.arena.chamada.Dao.UserDao;
 import br.com.tallys.ibel.arena.chamada.model.User;
@@ -22,21 +23,30 @@ public class Login extends HttpServlet{
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PrintWriter out = response.getWriter();
+		String page;
+		HttpSession sess = request.getSession();
+		User usuario = (User) sess.getAttribute("user");
+		if(usuario != null) {
+			page = usuario.toHTML();
+			out.println(page);
+			return;
+		}
+		
 		
 		//recupera login e senha
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
-		String page = "" + login + " / " + senha;//temporario
+		
 		
 		
 		//chama função de login
 		try {
-			User usuario = new UserDao().login(login, senha);
+			usuario = new UserDao().login(login, senha);
 			if(usuario == null) {
 				throw new Exception();
 			}
 			page = usuario.toHTML();
-			request.setAttribute("user", usuario);
+			sess.setAttribute("user", usuario);
 		} catch (Exception e) {
 			page =    "<!DOCTYPE html>"
 					+ "<html lang=\"pt-br\">"
@@ -60,9 +70,6 @@ public class Login extends HttpServlet{
 					+ "</body>"
 					+ "</html>";
 		}
-		
-		//monta a pagina do usuario
-		
 		//imprime a pagina do usuario
 		out.println(page);
 		

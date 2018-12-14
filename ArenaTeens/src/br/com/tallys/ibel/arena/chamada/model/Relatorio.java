@@ -1,22 +1,30 @@
 package br.com.tallys.ibel.arena.chamada.model;
 
+import java.util.Date;
+
 import br.com.tallys.ibel.arena.chamada.model.Enum.relatorioType;
 
 public abstract class Relatorio {
-	private relatorioType tipo;
-	private Teens pessoa;
-	private int pontuacao;
+	protected Date data;
+	protected relatorioType tipo;
+	protected Teens pessoa;
+	protected int pontuacao;
 	
-	private boolean closed;
-	private Fechamento fechamento;
+	public boolean closedBim;
+	protected Fechamento fechamentoBim;
+	public boolean closed;
+	protected Fechamento fechamento;
 	
 
 	
-	public Relatorio(relatorioType tipo, Teens pessoa, int pontuacao, Fechamento fechamento) {
+	public Relatorio(relatorioType tipo, Teens pessoa, int pontuacao, Fechamento fechamento, Fechamento fechamentoBim, Date data) {
 		super();
+		this.data = data;
 		this.tipo = tipo;
 		this.pessoa = pessoa;
 		this.pontuacao = pontuacao;
+		this.closedBim = fechamentoBim==null?false:true;;
+		this.fechamentoBim = fechamentoBim;		
 		this.closed = fechamento==null?false:true;;
 		this.fechamento = fechamento;
 	}
@@ -41,4 +49,7 @@ public abstract class Relatorio {
 	public void setFechamento(Fechamento fechamento) {
 		this.fechamento = fechamento;
 	}
+	
+	public abstract String toString();
+	
 }

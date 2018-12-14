@@ -9,10 +9,10 @@ public class Fechamento {
 	
 	private Date inicio;
 	private Date fim;
-	private relatorioType tipo;
+	private int tipo;
 	private LinkedList<Relatorio> relatorios;
 	
-	public void update(Date inic, Date end, relatorioType tipo2, LinkedList<Relatorio> relatorios2) {
+	public void update(Date inic, Date end, int tipo2, LinkedList<Relatorio> relatorios2) {
 		this.inicio = inic;
 		this.fim = end;
 		this.tipo = tipo2;
