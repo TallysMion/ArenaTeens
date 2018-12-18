@@ -1,11 +1,13 @@
 package br.com.tallys.ibel.arena.chamada.model;
 
+import java.util.Date;
 import java.util.LinkedList;
 
 import br.com.tallys.ibel.arena.chamada.model.Enum.UserType;
 
 public class Teens extends User {
 
+	private int id;
 	private GA grupo;
 	private LinkedList<Relatorio> relatorios;
 	private int bim;
@@ -20,7 +22,7 @@ public class Teens extends User {
 	}
 
 	@Override
-	public String toHTML() {
+	public String toHTML(boolean page) {
 		if(this.bim < 0 || this.anual < 0) {
 			this.bim = 0;
 			this.anual = 0;
@@ -90,14 +92,14 @@ public class Teens extends User {
 				"					</div>\r\n" + 
 				"					<div class=\"row\">\r\n" + 
 				"							<div class=\"col\">\r\n" + 
-				"								<input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Relatório Bimestral\" disabled/>\r\n" + 
+				"								<a class=\"btn btn-primary "+ (page?"":"disabled") + " \" type=\"button\" style=\"width: 100%\" href=\"Login\" role=\"button\" >Relatorio Bimestral</a>\r\n" + //mudar para link A fazer Funcionar 
 				"							</div>\r\n" + 
 				"							<div class=\"col\">\r\n" + 
-				"								<input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Relatório Anual\" />\r\n" + 
+				"								<a class=\"btn btn-primary "+ (!page?"":"disabled") + " \" type=\"button\" style=\"width: 100%\" href=\"Login2\" role=\"button\" >Relatorio Anual</a>\r\n" + //mudar para link A fazer Funcionar 
 				"							</div>\r\n" + 
 				"					</div>\r\n" + 
 				"					<br>\r\n" + 
-				"					<ul class=\"list-group text-dark\">\r\n"; 
+				"					<ul class=\"list-group text-dark\" "+ (!page?"":"hidden") +" >\r\n"; 
 				
 					if(this.relatorios.size() == 0) {
 						result += "<li class=\"list-group-item\">Nenhum Relatorio Encontrado</li>\r\n";
@@ -110,7 +112,7 @@ public class Teens extends User {
 					}
 				
 		result+="					</ul>\r\n" + 
-				"					<ul class=\"list-group text-dark\" hidden>	\r\n"; 
+				"					<ul class=\"list-group text-dark\" "+ (page?"":"hidden") +" >\r\n"; 
 				if(this.relatorios.size() == 0) {
 					result += "<li class=\"list-group-item\">Nenhum Relatorio Encontrado</li>\r\n";
 				}else {
@@ -141,9 +143,9 @@ public class Teens extends User {
 		return 0;
 	}
 
-	public Teens(String login, String senha, String nome, int externalID, GA grupo,
-			LinkedList<Relatorio> relatorios) {
-		super(login, senha, nome, UserType.Teen, externalID);
+	public Teens(String login, String senha, String nome, int externalID, String telefone, Date nasc, GA grupo,
+			LinkedList<Relatorio> relatorios, int id) {
+		super(login, senha, nome, UserType.Teen, externalID, telefone, nasc);
 		this.grupo = grupo;
 		this.relatorios = relatorios;
 		if(this.relatorios == null) {
@@ -151,6 +153,7 @@ public class Teens extends User {
 		}
 		this.bim = -1;
 		this.anual = -1;
+		this.id = id;
 	}
 
 	public void setGA(GA ga) {
@@ -181,6 +184,36 @@ public class Teens extends User {
 		String result = "<li class=\"list-group-item\">"+ this.nome + "[ " + this.bim + " | " + this.anual + " ]</li>\r\n";
 		
 		return result;		
+	}
+
+	@Override
+	public String toHTML() {
+		return this.toHTML(false);
+	}
+
+	public String toChamadaImersao() {
+		return  "							<li>\r\n" + 
+				"				    			<div class=\"form-group\">\r\n" + 
+				"		    						<div class=\"row ml-1 sl-1\">\r\n" + 
+				"			    						<label for=\"CadInput\">"+ this.nome +":</label><br>\r\n" + 
+				"			    					</div>\r\n" + 
+				"			    					<div class=\"row\">\r\n" + 
+				"			    						<div class=\"col\">	\r\n" + 
+				"				    						<label class=\"custom-control custom-checkbox\">\r\n" + 
+				"											      <input type=\"checkbox\" class=\"custom-control-input\" id=\"pres_"+this.id+"\">\r\n" + 
+				"											      <span class=\"custom-control-indicator\"></span>\r\n" + 
+				"											      <span class=\"custom-control-description\">Presenca</span>\r\n" + 
+				"											</label>\r\n" + 
+				"										</div>\r\n" + 
+				"										<div class=\"col\">	\r\n" + 
+				"				    						<label>Pontos Extras</label>\r\n" + 
+				"			    						</div>\r\n" + 
+				"			    						<div class=\"col\">\r\n" + 
+				"				    						<input type=\"number\" id=\"vers_"+this.id+"\">\r\n" + 
+				"										</div>\r\n" + 
+				"									</div>							\r\n" + 
+				"								</div>\r\n" + 
+				"							</li>\r\n";
 	}
 	
 

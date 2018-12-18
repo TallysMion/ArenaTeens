@@ -7,9 +7,6 @@ public class Arena {
 	public LinkedList<Lider> lideres;
 	public LinkedList<GA> ga;
 	public LinkedList<Fechamento> relatorios;
-	
-	
-
 
 
 	public Arena(LinkedList<Lider> lideres, LinkedList<GA> ga, LinkedList<Fechamento> relatorios) {
@@ -23,7 +20,7 @@ public class Arena {
 	public Arena() {
 		// TODO Auto-generated constructor stub
 		this.lideres = new LinkedList<Lider>();
-		this.ga = ga = new LinkedList<GA>();
+		this.ga = new LinkedList<GA>();
 		this.relatorios = new LinkedList<Fechamento>();
 	}
 

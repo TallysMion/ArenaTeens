@@ -2,6 +2,7 @@ package br.com.tallys.ibel.arena.chamada.model;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 
 import br.com.tallys.ibel.arena.chamada.model.Enum.UserType;
 
@@ -17,13 +18,12 @@ public class Lider extends User {
 		return null;
 	}
 
-	public Lider(String login, String senha, String nome, int externalID, Arena arena) {
-		super(login, senha, nome, UserType.Lider, externalID);
+	public Lider(String login, String senha, String nome, int externalID, String telefone, Date nasc, Arena arena) {
+		super(login, senha, nome, UserType.Lider, externalID, telefone, nasc);
 		this.arena = arena;
 	}
 
-	@Override
-	public String toHTML() {
+	public String toHTML(boolean page) {
 		// TODO Auto-generated method stub
 		String result;
 		result= "<!DOCTYPE html>\r\n" + 
@@ -56,20 +56,35 @@ public class Lider extends User {
 				"							<input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Config\" />\r\n" + //mudar para link A 
 				"						</div>\r\n" + 
 				"						<div class=\"col-4\">\r\n" + 
-				"<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"logout\" role=\"button\">Log out</a>\r\n" +
+				"							<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"logout\" role=\"button\">Log out</a>\r\n" +
 				"						</div>\r\n" + 
 				"					</div>\r\n" + 
 				"					<br>\r\n" + 
 				"					<div class=\"row\">\r\n" + 
 				"							<div class=\"col\">\r\n" + 
-				"								<input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Grupos de Amizade\" disabled/>\r\n" + //mudar para link A fazer Funcionar
+				"								<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"chamada_imersao\" role=\"button\">Chamada Imersao</a>\r\n" +
+				"							</div>\r\n" +  
+				"					</div>\r\n" +
+				"					<br>\r\n" + 
+				"					<div class=\"row\">\r\n" + 
+				"							<div class=\"col\">\r\n" + 
+				"								<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"fecha_bim\" role=\"button\">Fechar Bimestre</a>\r\n" +
+				"							</div>\r\n" +  
+				"							<div class=\"col\">\r\n" + 
+				"								<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"fecha_year\" role=\"button\">Fechar Ano</a>\r\n" +
+				"							</div>\r\n" +  
+				"					</div>\r\n" +
+				"					<br>\r\n" + 
+				"					<div class=\"row\">\r\n" + 
+				"							<div class=\"col\">\r\n" + 
+				"								<a class=\"btn btn-primary "+ (page?"":"disabled") + " \" type=\"button\" style=\"width: 100%\" href=\"Login\" role=\"button\" >Grupos de Amizade</a>\r\n" + //mudar para link A fazer Funcionar
 				"							</div>\r\n" + 
 				"							<div class=\"col\">\r\n" + 
-				"								<input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Relatórios\" />\r\n" + //mudar para link A *fazer funcionar
+				"								<a class=\"btn btn-primary "+ (!page?"":"disabled") + " \" type=\"button\" style=\"width: 100%\" href=\"Login2\" role=\"button\" >Relatorios</a>\r\n" + //mudar para link A fazer Funcionar
 				"							</div>\r\n" + 
 				"					</div>\r\n" + 
 				"					<br>\r\n" + 
-				"					<ul class=\"list-group text-dark\">\r\n";
+				"					<ul class=\"list-group text-dark\" "+ (!page?"":"hidden") +" >\r\n";
 		
 		if(this.arena.ga.size() == 0) {
 			result+="<li class=\"list-group-item\">Nenhum GA Encontrado</li>\r\n";
@@ -92,7 +107,7 @@ public class Lider extends User {
 //				"  						<li class=\"list-group-item\">Macarrão</li>\r\n" + 
 				
 		result+="					</ul>\r\n" + 
-				"					<ul class=\"list-group text-dark\" hidden>	\r\n";
+				"					<ul class=\"list-group text-dark\" "+ (page?"":"hidden") +">	\r\n";
 		
 		if(this.arena.relatorios.size() == 0) {
 			result+="<li class=\"list-group-item\">Nenhum Relatorio Encontrado</li>\r\n";
@@ -144,6 +159,11 @@ public class Lider extends User {
 
 	public Arena getArena() {
 		return arena;
+	}
+
+	@Override
+	public String toHTML() {
+		return this.toHTML(false);
 	}
 
 	

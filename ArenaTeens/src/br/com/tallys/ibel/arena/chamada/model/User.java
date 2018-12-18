@@ -1,5 +1,7 @@
 package br.com.tallys.ibel.arena.chamada.model;
 
+import java.util.Date;
+
 import br.com.tallys.ibel.arena.chamada.model.Enum.UserType;
 
 public abstract class User {
@@ -9,16 +11,20 @@ public abstract class User {
 	protected String nome;
 	private UserType tipo;
 	private int externalID;
+	private String telefone;
+	private Date nasc;
 	
 	
 	
-	public User(String login, String senha, String nome, UserType tipo, int externalID) {
+	public User(String login, String senha, String nome, UserType tipo, int externalID, String telefone, Date nasc) {
 		super();
 		this.login = login;
 		this.senha = senha;
 		this.nome = nome;
 		this.tipo = tipo;
 		this.externalID = externalID;
+		this.telefone= telefone;
+		this.nasc = nasc;
 	}
 	
 	
@@ -51,11 +57,6 @@ public abstract class User {
 	      return sign;  
 	}
 	
-	//Método de logout - o que usa?
-	public void logout() {
-		
-	}
-	
 	//altera o nome do usuario
 	public boolean changeUsername(String newName) {
 		return false;
@@ -74,6 +75,7 @@ public abstract class User {
 	
 	//Retorna um HTML de referencia ao usuario
 	public abstract String toHTML();
+	public abstract String toHTML(boolean b);
 
 
 

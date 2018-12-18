@@ -15,8 +15,8 @@ import br.com.tallys.ibel.arena.chamada.model.User;
 import br.com.tallys.ibel.arena.chamada.utils.Codigo;
 import br.com.tallys.ibel.arena.chamada.utils.CodigoType;
 
-@WebServlet("/Login")
-public class Login extends HttpServlet{
+@WebServlet("/Login2")
+public class Login2 extends HttpServlet{
 
 	//auto-generated SerialKey
 	private static final long serialVersionUID = 1L;
@@ -27,7 +27,7 @@ public class Login extends HttpServlet{
 		HttpSession sess = request.getSession();
 		User usuario = (User) sess.getAttribute("user");
 		if(usuario != null) {
-			page = usuario.toHTML(false);
+			page = usuario.toHTML(true);
 			out.println(page);
 			return;
 		}
@@ -45,7 +45,7 @@ public class Login extends HttpServlet{
 			if(usuario == null) {
 				throw new Exception();
 			}
-			page = usuario.toHTML(false);
+			page = usuario.toHTML(true);
 			sess.setAttribute("user", usuario);
 		} catch (Exception e) {
 			page =    "<!DOCTYPE html>"

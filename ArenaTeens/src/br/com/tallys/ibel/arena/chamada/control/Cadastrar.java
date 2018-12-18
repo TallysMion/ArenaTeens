@@ -3,12 +3,17 @@ package br.com.tallys.ibel.arena.chamada.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.tallys.ibel.arena.chamada.Dao.ArenaDao;
 import br.com.tallys.ibel.arena.chamada.Dao.CodigoDao;
@@ -31,11 +36,22 @@ public class Cadastrar  extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PrintWriter out = response.getWriter();
 		
-		String login  = request.getParameter("login");
-		String senha  = request.getParameter("senha");
-		String senha2 = request.getParameter("senhaConfirm");
-		String nome   = request.getParameter("nome");
-		String codigo = request.getParameter("codigo");
+		String login    = request.getParameter("login");
+		String senha    = request.getParameter("senha");
+		String senha2   = request.getParameter("senhaConfirm");
+		String nome     = request.getParameter("nome");
+		String codigo   = request.getParameter("codigo");
+		String telefone = request.getParameter("telefone");
+		
+		String nascStr  = request.getParameter("nasc");
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+		Date nasc = null;
+		try {
+			nasc = (Date)formatter.parse(nascStr);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
 			if(UserDao.isUsed(login)) {
@@ -83,7 +99,7 @@ public class Cadastrar  extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-						result = new Lider(login, encript, nome, cd.getExtId(), arena);	
+						result = new Lider(login, encript, nome, cd.getExtId(), telefone, nasc,  arena);	
 						extId = 0;
 						tipo = UserType.Lider;
 						break;
@@ -94,7 +110,7 @@ public class Cadastrar  extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			result = new Sublider(login, encript, nome, cd.getExtId(), ga);
+			result = new Sublider(login, encript, nome, cd.getExtId(), telefone, nasc, ga);
 			extId = cd.getExtId();
 			tipo = UserType.Sublider;
 			break;
@@ -105,20 +121,23 @@ public class Cadastrar  extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			result = new Teens(login, encript, nome, cd.getExtId(), ga,  null);
+			result = new Teens(login, encript, nome, cd.getExtId(), telefone, nasc, ga,  null, -1);
 			extId = cd.getExtId();
 			tipo = UserType.Teen;
 			break;
 		}
 		
 		try {
-			UserDao.Cadastrar(login, encript, tipo.ordinal(), nome, extId);
+			UserDao.Cadastrar(login, encript, tipo.ordinal(), nome, extId, telefone, nasc);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("login");
+		HttpSession sess = request.getSession();
+		sess.setAttribute("user", result);
+		
+		response.sendRedirect("Login");
 		
 	}
 

@@ -2,6 +2,7 @@ package br.com.tallys.ibel.arena.chamada.model;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.LinkedList;
 
 import br.com.tallys.ibel.arena.chamada.model.Enum.UserType;
@@ -19,7 +20,7 @@ public class Sublider extends User {
 	}
 
 	@Override
-	public String toHTML() {
+	public String toHTML(boolean page) {
 		String result = "";
 		try {
 			result = "<!DOCTYPE html>\r\n" + 
@@ -64,9 +65,6 @@ public class Sublider extends User {
 					"							<div class=\"col\">\r\n" + 
 					"								<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"chamadaArena\" role=\"button\">Chamada Arena</a>\r\n" + 
 					"							</div>\r\n" + 
-					"							<div class=\"col\">\r\n" + 
-					"								<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"chamadaImersao\" role=\"button\">Chamada Imersao</a>\r\n" + 
-					"							</div>\r\n" + 
 					"					</div>\r\n" + 
 					"					<br>\r\n" + 
 					"					<ul class=\"list-group text-dark\">\r\n";
@@ -109,8 +107,8 @@ public class Sublider extends User {
 		return 0;
 	}
 
-	public Sublider(String login, String senha, String nome, int externalID, GA grupo) {
-		super(login, senha, nome, UserType.Sublider, externalID);
+	public Sublider(String login, String senha, String nome, int externalID,String telefone, Date nasc, GA grupo) {
+		super(login, senha, nome, UserType.Sublider, externalID, telefone, nasc);
 		this.grupo = grupo;
 	}
 
@@ -121,6 +119,11 @@ public class Sublider extends User {
 	@Override
 	public UserType getType() {
 		return UserType.Sublider;
+	}
+
+	@Override
+	public String toHTML() {
+		return this.toHTML(false);
 	}
 	
 }

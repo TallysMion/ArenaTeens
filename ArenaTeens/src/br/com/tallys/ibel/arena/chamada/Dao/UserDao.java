@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.LinkedList;
 
 import br.com.tallys.ibel.arena.chamada.jdbc.Factory;
@@ -31,7 +32,6 @@ public class UserDao {
 		ResultSet resultSet = null;
 		Statement statement = connect.createStatement();
 		resultSet = statement.executeQuery(consult);
-
 		
 		if(!resultSet.next()) {
 			System.out.println("nenhum Usuario Encontrado com " + login + " / " + senha + " / " + encripted);
@@ -51,20 +51,22 @@ public class UserDao {
 		}
 		
 		int extId = resultSet.getInt(6);
+		String telefone = resultSet.getString(7);
+		Date nasc = resultSet.getDate(8);
 		
 		Arena ar;
 		GA ga;
 		switch(tipo) {
 		case Lider:
 			ar = new ArenaDao().getArena();
-			return new Lider(login, senha, nome, extId, ar);
+			return new Lider(login, senha, nome, extId, telefone, nasc, ar);
 		case Sublider:
 			ga = new GADao().getGA(extId);
-			return new Sublider(login, senha, nome, extId, ga);
+			return new Sublider(login, senha, nome, extId, telefone, nasc, ga);
 		case Teen:
 			ga = new GADao().getGA(extId);
 			LinkedList<Relatorio> rel = new RelatorioDao().getRelatorios(id);
-			return new Teens(login, senha, nome, extId, ga, rel);
+			return new Teens(login, senha, nome, extId, telefone, nasc, ga, rel, id);
 		}
 		
 		
@@ -97,17 +99,19 @@ public class UserDao {
 			String login = resultSet.getString(3);
 			String senha = null;
 			extId = resultSet.getInt(6);
+			String telefone = resultSet.getString(7);
+			Date nasc = resultSet.getDate(8);
 			
 			switch(tipo) {
 			case Lider:
-				result.add(new Lider(login, senha, nome, extId, null));
+				result.add(new Lider(login, senha, nome, extId, telefone, nasc, null));
 				break;
 			case Sublider:
-				result.add(new Sublider(login, senha, nome, extId, null));
+				result.add(new Sublider(login, senha, nome, extId, telefone, nasc, null));
 				break;
 			case Teen:
 				LinkedList<Relatorio> rel = new RelatorioDao().getRelatorios(id);
-				result.add(new Teens(login, senha, nome, extId, null, rel));
+				result.add(new Teens(login, senha, nome, extId, telefone, nasc, null, rel, id));
 				break;
 			}
 			
@@ -128,16 +132,18 @@ public class UserDao {
 		return result;
 	}
 	
-	public static void Cadastrar(String login, String senha, int tipo, String nome, int extId) throws ClassNotFoundException, IOException, SQLException {
+	public static void Cadastrar(String login, String senha, int tipo, String nome, int extId, String telefone, Date nasc) throws ClassNotFoundException, IOException, SQLException {
 		Connection connect = null;
 		connect = new Factory().getConnection();			
-		String consult = "INSERT INTO `usuario`(`usu_name`, `usu_login`, `usu_password`, `usu_type`, `usu_ref`) VALUES (?,?,?,?,?)";
+		String consult = "INSERT INTO `usuario`(`usu_name`, `usu_login`, `usu_password`, `usu_type`, `usu_ref`, `usu_tel`, `usu_nasc`) VALUES (?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = connect.prepareStatement(consult);
         pstmt.setString(1, nome);
         pstmt.setString(2, login);
         pstmt.setString(3, senha);
         pstmt.setInt(4, tipo);
         pstmt.setInt(5, extId);
+        pstmt.setString(6, telefone);
+        pstmt.setDate(7, new java.sql.Date(nasc.getTime()));
 		pstmt.executeUpdate();
 		
 		
