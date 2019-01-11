@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.tallys.ibel.arena.chamada.model.GA;
-import br.com.tallys.ibel.arena.chamada.model.Lider;
+import br.com.tallys.ibel.arena.chamada.model.Sublider;
 import br.com.tallys.ibel.arena.chamada.model.Teens;
 import br.com.tallys.ibel.arena.chamada.model.User;
 
-@WebServlet("/chamada_imersao")
-public class ChamadaImersao extends HttpServlet{
+@WebServlet("/chamada_arena")
+public class ChamadaArena extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -30,11 +30,8 @@ public class ChamadaImersao extends HttpServlet{
 			return;
 		}
 		
-		Lider l = (Lider) usuario;
-		LinkedList<GA> gas = l.getArena().getGa();
-		LinkedList<Teens> teens = new LinkedList<Teens>();
-		for(GA g:gas)
-			teens.addAll(g.getTeens());
+		Sublider sl = (Sublider) usuario;
+		LinkedList<Teens> teens = sl.getGa().getTeens();
 		
 		page = "<!DOCTYPE html>\r\n" + 
 				"<html lang=\"pt-br\">\r\n" + 
@@ -65,22 +62,20 @@ public class ChamadaImersao extends HttpServlet{
 				"			<div class=\"row\">\r\n" + 
 				"				\r\n" + 
 				"				<div class=\"col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto\">\r\n" + 
-				"					<form action=\"ChamadaImersaoEx\" method=\"POST\" data-toggle=\"validator\" role=\"form\" class=\"bootstrap-form\" novalidate>\r\n" + 
-				"				    	<div class=\"form-group\">\r\n" +
-				"		    				\r\n" + 
-				//"		    				<ul class=\"list-group\">\r\n" + 
-				"  							\r\n"; 
+				"					<form action=\"ChamadaArenaEx\" data-toggle=\"validator\" role=\"form\" class=\"bootstrap-form\" novalidate>\r\n" + 
+				"		    			\r\n" + 
+				"		    			<ul class=\"list-group\">\r\n" + 
+				"  						\r\n"; 
 		
 		for(Teens t:teens)
-			page += t.toChamadaImersao();
+			page += t.toChamadaArena();
 		
-		page += //"							</ul>\r\n" +
-				"  						</div>	\r\n" + 
+		page += "						</ul>\r\n" + 
 				"						\r\n" + 
 				"						\r\n" + 
-				"						<div class=\"row w-100 p-3 col-center\" >\r\n" + 
-				"							<div class=\"col\"><input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Confirmar\" /></div>\r\n" + 
-				"							<div class=\"col\"><a class=\"btn btn-primary\" style=\"width: 100%\" href=\"Login\" role=\"button\">Cancelar</a></div>\r\n" + 
+				"  						<div class=\"row w-100 p-3 col-center\" >\r\n" + 
+				"  							<div class=\"col\"><input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Confirmar\" /></div>\r\n" + 
+				"  							<div class=\"col\"><a class=\"btn btn-primary\" style=\"width: 100%\" href=\"Login\" role=\"button\">Cancelar</a></div>\r\n" + 
 				"  						</div>	\r\n" + 
 				"					</form>\r\n" + 
 				"				</div>\r\n" + 

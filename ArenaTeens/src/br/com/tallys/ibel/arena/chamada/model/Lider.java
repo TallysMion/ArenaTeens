@@ -53,7 +53,7 @@ public class Lider extends User {
 				"							<text>"+ this.nome +"</text>\r\n" + 
 				"						</div>\r\n" + 
 				"						<div class=\"col-4\">\r\n" + 
-				"							<input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Config\" />\r\n" + //mudar para link A 
+				"							<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"Config.jsp\" role=\"button\">Config</a>\r\n" + 
 				"						</div>\r\n" + 
 				"						<div class=\"col-4\">\r\n" + 
 				"							<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"logout\" role=\"button\">Log out</a>\r\n" +
@@ -91,7 +91,7 @@ public class Lider extends User {
 		}else {
 			for(GA ga:this.arena.ga) {
 				try {
-					result+="<li class=\"list-group-item\">"+ ga.toString(true) + " </li>\r\n";
+					result+="<li class=\"list-group-item\"> <a href=\"InfoGa?id=" + ga.getId() + "\">"  + ga.toString(true) + "</a></li>\r\n";
 				} catch (ClassNotFoundException | IOException | SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

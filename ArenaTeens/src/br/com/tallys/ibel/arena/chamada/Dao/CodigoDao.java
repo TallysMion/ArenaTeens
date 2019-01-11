@@ -32,7 +32,7 @@ public class CodigoDao {
 		}
 		
 		Codigo result = new Codigo(Id, codigo, tipo, extId);
-		
+		connect.close();//
 		return result;
 
 	}
@@ -57,7 +57,7 @@ public class CodigoDao {
 		}
 		
 		Codigo result = new Codigo(Id, codigo, tipo, extId);
-		
+		connect.close();
 		return result;
 	}
 
@@ -95,7 +95,7 @@ public class CodigoDao {
 		}
 		
 		Codigo result = new Codigo(Id, codigo, tipo, extId);
-		
+		connect.close();
 		return result;
 	}
 

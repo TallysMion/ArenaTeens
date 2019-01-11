@@ -9,13 +9,16 @@ import br.com.tallys.ibel.arena.chamada.Dao.GADao;
 
 public class GA {
 	
+	private int id;
 	private String nome; 
 	private LinkedList<Sublider> sublideres;
 	private LinkedList<Teens> teens;
 	private String codigoTeen;
 	private String codigoSublider;
 	
-	public void update(String nome, LinkedList<Sublider> sublds, LinkedList<Teens> teens) {
+	
+	public void update(int id, String nome, LinkedList<Sublider> sublds, LinkedList<Teens> teens) {
+		this.id = id;
 		this.nome = nome;
 		this.sublideres = sublds;
 		this.teens = teens;	
@@ -37,6 +40,16 @@ public class GA {
 		this.teens = new LinkedList<Teens>();
 		this.codigoTeen = "";
 		this.codigoSublider = "";
+	}
+
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNome() {

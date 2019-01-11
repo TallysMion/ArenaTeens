@@ -11,7 +11,6 @@ import java.util.LinkedList;
 import br.com.tallys.ibel.arena.chamada.jdbc.Factory;
 import br.com.tallys.ibel.arena.chamada.model.Fechamento;
 import br.com.tallys.ibel.arena.chamada.model.Relatorio;
-import br.com.tallys.ibel.arena.chamada.model.Enum.relatorioType;
 
 public class fechamentoDao {
 
@@ -25,7 +24,7 @@ public class fechamentoDao {
 		Date end  = resultSet.getDate(3);
 		int tipo = resultSet.getInt(4)==0?0:1;
 		LinkedList<Relatorio> relatorios;
-		relatorios = tipo==0?new RelatorioDao().getRelatoriosFechamento(idFech):new RelatorioDao().getRelatoriosFechamentoBim(idFech);
+		relatorios = tipo==0?RelatorioDao.getRelatoriosFechamentoAnual(idFech):new RelatorioDao().getRelatoriosFechamentoBim(idFech);
 		
 		Fechamento result = new Fechamento();
 		for(int i=0; i<relatorios.size(); i++) {
@@ -33,7 +32,7 @@ public class fechamentoDao {
 		}
 		result.update(inic, end, tipo, relatorios);
 		
-		
+		connect.close();
 		return result;
 	}
 

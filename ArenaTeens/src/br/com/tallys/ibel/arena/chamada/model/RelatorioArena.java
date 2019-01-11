@@ -50,18 +50,44 @@ public class RelatorioArena extends Relatorio {
 	@Override
 	public String toString() {
 		String result = "<li class=\"list-group-item\">" 
-	+ this.data.getDate() +"/"+ (this.data.getMonth()+1) +"/"+ (this.data.getYear()+1900) + " - Pontuacao Total: " + this.pontuacao + "<br>"
-				+ "Presenca: " + (this.presenca?"V":"F") 
-				+ "  	Meditacao: " + (this.meditacao?"V":"F")  
-				+ "  	Pontualidade: " + (this.pontualidade?"V":"F")
-				+ "<br>"
-				+ "Anotacao de Domingo: " + (this.anotDomingo?"V":"F")
-				+ "  	Anotacao do Arena: " + (this.anotArena?"V":"F")
-				+ "<br>"
-				+ "Versiculos: " + (this.versiculos)
-				+ "  	Extra: " + (this.pontosExtras)				
+				+ this.pessoa.nome +" - "+ + this.data.getDate() +"/"+ (this.data.getMonth()+1) +"/"+ (this.data.getYear()+1900) + "<br>Pontuacao Total: " + this.pontuacao + "<br>"
+				+ "<div class=\"col-6\">Presenca: " + (this.presenca?"V":"F") + "</div>" 
+				+ "<div class=\"col-6\">Meditacao: " + (this.meditacao?"V":"F") + "</div>"  
+				+ "<div class=\"col-6\">Pontualidade: " + (this.pontualidade?"V":"F") + "</div>"
+				+ "<div class=\"col-12\"> Anotacao de Domingo: " + (this.anotDomingo?"V":"F") + "</div>"
+				+ "<div class=\"col-12\"> Anotacao do Arena: " + (this.anotArena?"V":"F") + "</div>"
+				+ "<div class=\"col-6\"> Versiculos: " + (this.versiculos) + "</div>"
+				+ "<div class=\"col-6\"> Extra: " + (this.pontosExtras)+ "</div>"
 				+ "</li>\r\n";
 		return result;
+	}
+
+	public boolean isPresenca() {
+		return presenca;
+	}
+
+	public boolean isMeditacao() {
+		return meditacao;
+	}
+
+	public boolean isPontualidade() {
+		return pontualidade;
+	}
+
+	public boolean isAnotDomingo() {
+		return anotDomingo;
+	}
+
+	public boolean isAnotArena() {
+		return anotArena;
+	}
+
+	public int getVersiculos() {
+		return versiculos;
+	}
+
+	public int getPontosExtras() {
+		return pontosExtras;
 	}
 	
 }

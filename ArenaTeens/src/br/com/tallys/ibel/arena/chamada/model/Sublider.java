@@ -50,7 +50,7 @@ public class Sublider extends User {
 					"							<text>"+ this.nome +"</text>\r\n" + 
 					"						</div>\r\n" + 
 					"						<div class=\"col-4\">\r\n" + 
-					"							<input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Config\" />\r\n" + 
+					"							<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"Config.jsp\" role=\"button\">Config</a>\r\n" + 
 					"						</div>\r\n" + 
 					"						<div class=\"col-4\">\r\n" + 
 					"						<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"logout\" role=\"button\">Log out</a>\r\n" + 
@@ -63,7 +63,7 @@ public class Sublider extends User {
 					"					<br>\r\n" + 
 					"					<div class=\"row\">\r\n" + 
 					"							<div class=\"col\">\r\n" + 
-					"								<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"chamadaArena\" role=\"button\">Chamada Arena</a>\r\n" + 
+					"								<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"chamada_arena\" role=\"button\">Chamada Arena</a>\r\n" + 
 					"							</div>\r\n" + 
 					"					</div>\r\n" + 
 					"					<br>\r\n" + 
@@ -74,7 +74,7 @@ public class Sublider extends User {
 					}else {
 						LinkedList<Teens> ts = this.grupo.getTeens();
 						for(Teens t:ts) {
-							result += ts.toString();
+							result += t.toString();
 						}
 					}							
 //							"  						<li class=\"list-group-item\">Arroz</li>\r\n" + 
@@ -124,6 +124,10 @@ public class Sublider extends User {
 	@Override
 	public String toHTML() {
 		return this.toHTML(false);
+	}
+
+	public GA getGa() {
+		return this.grupo;
 	}
 	
 }

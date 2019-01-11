@@ -58,19 +58,22 @@ public class UserDao {
 		GA ga;
 		switch(tipo) {
 		case Lider:
-			ar = new ArenaDao().getArena();
+			ar = ArenaDao.getArena();
+			connect.close();
 			return new Lider(login, senha, nome, extId, telefone, nasc, ar);
 		case Sublider:
-			ga = new GADao().getGA(extId);
+			ga = GADao.getGA(extId);
+			connect.close();
 			return new Sublider(login, senha, nome, extId, telefone, nasc, ga);
 		case Teen:
-			ga = new GADao().getGA(extId);
-			LinkedList<Relatorio> rel = new RelatorioDao().getRelatorios(id);
+			ga = GADao.getGA(extId);
+			LinkedList<Relatorio> rel = RelatorioDao.getRelatorios(id);
+			connect.close();
 			return new Teens(login, senha, nome, extId, telefone, nasc, ga, rel, id);
 		}
 		
 		
-		
+		connect.close();
 		return null;
 	}
 
@@ -110,13 +113,14 @@ public class UserDao {
 				result.add(new Sublider(login, senha, nome, extId, telefone, nasc, null));
 				break;
 			case Teen:
-				LinkedList<Relatorio> rel = new RelatorioDao().getRelatorios(id);
+				LinkedList<Relatorio> rel = RelatorioDao.getRelatorios(id);
 				result.add(new Teens(login, senha, nome, extId, telefone, nasc, null, rel, id));
 				break;
 			}
 			
 			
 		}
+		connect.close();
 		return result;
 	}
 	
@@ -171,6 +175,74 @@ public class UserDao {
 		
 		connect.close();
 		return;	
+	}
+
+	public static void updateData(String login, String senha, String nlogin, Date nNasc, String nTel) throws ClassNotFoundException, IOException, SQLException {
+		Connection connect = null;
+		connect = new Factory().getConnection();			
+		String consult = "UPDATE `usuario` SET `usu_name`=?,`usu_tel`=?,`usu_nasc`=? WHERE `usu_login`=? AND `usu_password`=?";
+		PreparedStatement pstmt = connect.prepareStatement(consult);
+        pstmt.setString(1, nlogin);
+        pstmt.setString(2, nTel);
+        pstmt.setDate(3, new java.sql.Date(nNasc.getTime()));
+        pstmt.setString(4, login);
+        pstmt.setString(5, User.encrypt(login, senha));
+		pstmt.executeUpdate();  
+		connect.close();
+		return;
+	}
+
+	public static void updateKey(String login, String senha, String nSenha) throws ClassNotFoundException, IOException, SQLException {
+		Connection connect = null;
+		connect = new Factory().getConnection();			
+		String consult = "UPDATE `usuario` SET `usu_password`=? WHERE `usu_login`=? AND `usu_password`=?";
+		PreparedStatement pstmt = connect.prepareStatement(consult);
+        pstmt.setString(1, nSenha);
+        pstmt.setString(2, login);
+        pstmt.setString(3, User.encrypt(login, senha));
+		pstmt.executeUpdate();  
+		connect.close();
+		return;
+	}
+	
+	public static User getUserById(int id) throws ClassNotFoundException, SQLException, IOException {
+		Connection connect = null;
+		connect = new Factory().getConnection();
+		String consult = null;
+		consult = "SELECT * FROM `usuario` WHERE `usu_id`="+id;
+		
+		
+		ResultSet resultSet = null;
+		
+		Statement statement = connect.createStatement();
+		resultSet = statement.executeQuery(consult);
+			
+		while(resultSet.next()) {
+			
+			String nome     = resultSet.getString(2);
+			String login    = resultSet.getString(3);
+			String senha    = resultSet.getString(4);
+			int tp			= resultSet.getInt(5);
+			int    extId    = resultSet.getInt(6);
+			String telefone = resultSet.getString(7);
+			Date   nasc     = resultSet.getDate(8);
+			
+			switch(tp) {
+			case 0:
+				connect.close();
+				return (new Lider(login, senha, nome, extId, telefone, nasc, ArenaDao.getArena()));
+			case 1:
+				connect.close();
+				return (new Sublider(login, senha, nome, extId, telefone, nasc, GADao.getGA(extId)));
+			case 2:
+				connect.close();
+				return (new Teens(login, senha, nome, extId, telefone, nasc, GADao.getGA(extId), null, id));
+			}
+			
+			
+		}
+		connect.close();
+		return null;
 	}
 	
 	

@@ -57,6 +57,49 @@ public abstract class User {
 	      return sign;  
 	}
 	
+	
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+
+	public void setTipo(UserType tipo) {
+		this.tipo = tipo;
+	}
+
+
+
+	public void setExternalID(int externalID) {
+		this.externalID = externalID;
+	}
+
+
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+
+
+	public void setNasc(Date nasc) {
+		this.nasc = nasc;
+	}
+
+
+
 	//altera o nome do usuario
 	public boolean changeUsername(String newName) {
 		return false;
@@ -80,6 +123,50 @@ public abstract class User {
 
 
 	public abstract Object getType();
+
+
+
+	public String getNome() {
+		return this.nome;
+	}
+
+
+
+	public String getLogin() {
+		return login;
+	}
+
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+	public UserType getTipo() {
+		return tipo;
+	}
+
+
+
+	public int getExternalID() {
+		return externalID;
+	}
+
+
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+
+
+	public Date getNasc() {
+		return nasc;
+	}
+	
+	
 
 	
 

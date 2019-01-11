@@ -26,17 +26,17 @@ public class Login2 extends HttpServlet{
 		String page;
 		HttpSession sess = request.getSession();
 		User usuario = (User) sess.getAttribute("user");
+		
+		String login="", senha="";
 		if(usuario != null) {
-			page = usuario.toHTML(true);
-			out.println(page);
-			return;
+			login = usuario.getLogin();
+			senha = usuario.getSenha();
+		}else {
+			//recupera login e senha
+			login = request.getParameter("login");
+			senha = request.getParameter("senha");
 		}
-		
-		
-		//recupera login e senha
-		String login = request.getParameter("login");
-		String senha = request.getParameter("senha");
-		
+				
 		
 		
 		//chama função de login

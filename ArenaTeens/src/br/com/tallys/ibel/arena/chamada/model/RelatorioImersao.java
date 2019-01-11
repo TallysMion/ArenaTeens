@@ -22,6 +22,16 @@ public class RelatorioImersao extends Relatorio {
 	}
 	
 	
+	public boolean isPresenca() {
+		return presenca;
+	}
+
+
+	public int getPontosExtras() {
+		return pontosExtras;
+	}
+
+
 	@Override
 	public String toHTML() {
 		// TODO Auto-generated method stub
@@ -32,9 +42,9 @@ public class RelatorioImersao extends Relatorio {
 	@Override
 	public String toString() {
 		String result = "<li class=\"list-group-item\">" 
-	+ this.data.getDate() +"/"+ (this.data.getMonth()+1) +"/"+ (this.data.getYear()+1900) + " - Pontuacao Total: " + this.pontuacao + "<br>"
-				+ "Presenca: " + (this.presenca?"V":"F") 
-				+ "  	Extra: " + (this.pontosExtras)				
+	+ this.pessoa.nome +" - "+ this.data.getDate() +"/"+ (this.data.getMonth()+1) +"/"+ (this.data.getYear()+1900) + "<br>Pontuacao Total: " + this.pontuacao + "<br>"
+				+ "<div class=\"col-6\">Presenca: " + (this.presenca?"V":"F") + "</div>" 
+				+ "<div class=\"col-6\">Extra: " + (this.pontosExtras) + "</div>"
 				+ "</li>\r\n";
 		return result;
 	}

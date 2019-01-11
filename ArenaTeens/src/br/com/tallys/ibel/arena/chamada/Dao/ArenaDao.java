@@ -19,8 +19,8 @@ public class ArenaDao {
 		LinkedList<Lider> lds = new LinkedList<Lider>();
 		
 		LinkedList<GA> gas;
-		aux = new UserDao().getAllType(UserType.Lider, -1);
-		gas = new GADao().getAll();
+		aux = UserDao.getAllType(UserType.Lider, -1);
+		gas = GADao.getAll();
 		
 		Arena result = new Arena();		
 

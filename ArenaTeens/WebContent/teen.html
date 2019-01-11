@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width-device-width, initial-scale = 1, shrink-to-fit=no">
-	<title>Teen</title>
+	<title>Fechamento Bimestral</title>
 	
 	
 	<style type="text/css">
@@ -20,44 +20,29 @@
 			<div class="row">
 				
 				<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
-					<div class="row">
-						<div class="col-4">
-							<text>NOME DO TEEN</text>
-						</div>
-						<div class="col-4">
-							<input class="btn btn-primary" style="width: 100%" type="submit" value="Config" />
-						</div>
-						<div class="col-4">
-							<input class="btn btn-primary" style="width: 100%" type="submit" value="Log Out" />
-						</div>
+					<div class="row justify-content-center" align="center">
+							<h3>Fechamento Bimestral</h3>
 					</div>
 					<br>
-					<div class="row">
-							<div class="col-6">
-								<div class="row">
-									<label>Pontuação bimestral:</label>
+					
+					<form action="fecha_bim" method="POST" data-toggle="validator" role="form" class="bootstrap-form" novalidate>
+		    			
+    					<div class="row">
+							<div class="form-group">
+								<div class="col-5">
+									<input type="text" name="inic" class="form-control" id="UpdateDataNasc" onfocus="(this.type='date')" placeholder="12/06/1998" required>
 								</div>
-								<div class="row">
-									<label>999</label>]
+								<div class="col-5">
+									<input type="text" name="end" class="form-control" id="UpdateDataNasc" onfocus="(this.type='date')" placeholder="12/06/1999" required>
 								</div>
-							</div>
-							<div class="col-6">
-								<div class="row">
-									<label>Pontuação anual:</label>
-								</div>
-								<div class="row">
-									<label>9999</label>
+								<div class="col-2">
+									<div class="col"><input class="btn btn-primary" style="width: 100%" type="submit" value="ok" /></div>
 								</div>
 							</div>
-					</div>
-					<div class="row">
-							<div class="col">
-								<input class="btn btn-primary" style="width: 100%" type="submit" value="Relatório Bimestral" disabled/>
-							</div>
-							<div class="col">
-								<input class="btn btn-primary" style="width: 100%" type="submit" value="Relatório Anual" />
-							</div>
-					</div>
+						</div>
+					</form>
+					
+										
 					<br>
 					<ul class="list-group text-dark">
   						<li class="list-group-item">Arroz</li>
@@ -65,12 +50,11 @@
   						<li class="list-group-item">Batata</li>
   						<li class="list-group-item">Macarrão</li>
 					</ul>
-					<ul class="list-group text-dark" hidden>	
-  						<li class="list-group-item">Arroz</li>
-  						<li class="list-group-item">Feijão</li>
-  						<li class="list-group-item">Batata</li>
-  						<li class="list-group-item">Macarrão</li>
-					</ul>
+					<br>
+					<div class="row w-100 p-3 col-center" >
+  							<div class="col"><a class="btn btn-primary" style="width: 100%" href="FechaBimEx" role="button">Confirmar</a></div>
+  							<div class="col"><a class="btn btn-primary" style="width: 100%" href="Login" role="button">Voltar</a></div>
+  					</div>
 			</div>
 	</div>
 

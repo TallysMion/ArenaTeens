@@ -57,10 +57,11 @@ public class GADao {
 			
 			
 			
-			ga.update(nome, sublds, teens);
+			ga.update(id, nome, sublds, teens);
 			result.add(ga);
 			
 		}		
+		connect.close();
 		return result;
 	}
 	
@@ -98,8 +99,8 @@ public class GADao {
 			teens.add(t);
 		}
 		
-		result.update(nome, sublds, teens);
-		
+		result.update(id, nome, sublds, teens);
+		connect.close();
 		return result;
 	}
 	
@@ -124,7 +125,7 @@ public class GADao {
 		pstmt.executeUpdate();
 		
 		connect.close();
-
+		return;
 	}
 	
 	public static String codGATeen(GA ga) throws ClassNotFoundException, IOException, SQLException {
@@ -137,13 +138,14 @@ public class GADao {
 		if(resultSet != null && resultSet.next()) {
 			id = resultSet.getInt(1);
 		}else {
+			connect.close();
 			return null;
 		}
 		
 		Codigo cd = new Codigo(0, CodigoType.Teen, id);
 		
 		CodigoDao.insert(cd);		
-		
+		connect.close();
 		return cd.getCod();		
 	}
 	

@@ -65,7 +65,7 @@ public class Teens extends User {
 				"							<text>"+ this.nome +"</text>\r\n" + 
 				"						</div>\r\n" + 
 				"						<div class=\"col-4\">\r\n" + 
-				"							<input class=\"btn btn-primary\" style=\"width: 100%\" type=\"submit\" value=\"Config\" />\r\n" + 
+				"							<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"Config.jsp\" role=\"button\">Config</a>\r\n" + 
 				"						</div>\r\n" + 
 				"						<div class=\"col-4\">\r\n" + 
 				"						<a class=\"btn btn-primary\" style=\"width: 100%\" href=\"logout\" role=\"button\">Log out</a>\r\n" + 
@@ -160,6 +160,10 @@ public class Teens extends User {
 		this.grupo = ga;		
 	}
 
+	public LinkedList<Relatorio> getRelatorios() {
+		return relatorios;
+	}
+
 	@Override
 	public UserType getType() {
 		return UserType.Teen;
@@ -181,7 +185,7 @@ public class Teens extends User {
 			}
 		}
 		
-		String result = "<li class=\"list-group-item\">"+ this.nome + "[ " + this.bim + " | " + this.anual + " ]</li>\r\n";
+		String result = "<li class=\"list-group-item\"><a href=\"InfoTeen?id=" + this.id + "\">"  + this.nome + "[ " + this.bim + " | " + this.anual + " ]</a></li>\r\n";
 		
 		return result;		
 	}
@@ -192,7 +196,28 @@ public class Teens extends User {
 	}
 
 	public String toChamadaImersao() {
-		return  "							<li>\r\n" + 
+		return  //"							<li>\r\n" + 
+				"	    						<div class=\"row ml-1 sl-1\">\r\n" + 
+				"		    						<label for=\"CadInput\">"+ this.nome +":</label><br>\r\n" + 
+				"		    					</div>\r\n" + 
+				"		    					<div class=\"row\">\r\n" + 
+				"		    						<div class=\"col\">	\r\n" + 
+				"			    						<label class=\"custom-control custom-checkbox\">\r\n" + 
+				"										      <input name=\"pres_"+this.id+"\" type=\"checkbox\" class=\"custom-control-input\" id=\"presId_"+this.id+"\">\r\n" + 
+				"										      <span class=\"custom-control-indicator\"></span>\r\n" + 
+				"										      <span class=\"custom-control-description\">Presenca</span>\r\n" + 
+				"										</label>\r\n" + 
+				"									</div>\r\n" + 
+				"									<div class=\"col\">	\r\n" + 
+				"			    						<label>Pontos Extras</label>\r\n" + 
+				"			    						<input name=\"pe_"+this.id+"\" type=\"number\" id=\"peId_"+this.id+"\">\r\n" + 
+				"									</div>\r\n" + 
+				"								</div>							\r\n";// +  
+				//"						</li>\r\n";
+	}
+
+	public String toChamadaArena() {
+		return "<li>\r\n" + 
 				"				    			<div class=\"form-group\">\r\n" + 
 				"		    						<div class=\"row ml-1 sl-1\">\r\n" + 
 				"			    						<label for=\"CadInput\">"+ this.nome +":</label><br>\r\n" + 
@@ -200,20 +225,58 @@ public class Teens extends User {
 				"			    					<div class=\"row\">\r\n" + 
 				"			    						<div class=\"col\">	\r\n" + 
 				"				    						<label class=\"custom-control custom-checkbox\">\r\n" + 
-				"											      <input type=\"checkbox\" class=\"custom-control-input\" id=\"pres_"+this.id+"\">\r\n" + 
+				"											      <input type=\"checkbox\" class=\"custom-control-input\" name=\"pres_"+this.id+"\" id=\"presId_"+this.id+"\">\r\n" + 
 				"											      <span class=\"custom-control-indicator\"></span>\r\n" + 
 				"											      <span class=\"custom-control-description\">Presenca</span>\r\n" + 
 				"											</label>\r\n" + 
 				"										</div>\r\n" + 
 				"										<div class=\"col\">	\r\n" + 
+				"				    						<label class=\"custom-control custom-checkbox\">\r\n" + 
+				"											      <input type=\"checkbox\" class=\"custom-control-input\" name=\"med_"+this.id+"\" id=\"medId_"+this.id+"\">\r\n" + 
+				"											      <span class=\"custom-control-indicator\"></span>\r\n" + 
+				"											      <span class=\"custom-control-description\">Meditacao</span>\r\n" + 
+				"											</label>\r\n" + 
+				"										</div>\r\n" + 
+				"										<div class=\"col\">	\r\n" + 
+				"				    						<label class=\"custom-control custom-checkbox\">\r\n" + 
+				"											      <input type=\"checkbox\" class=\"custom-control-input\" name=\"pont_"+this.id+"\"id=\"pontId_"+this.id+"\">\r\n" + 
+				"											      <span class=\"custom-control-indicator\"></span>\r\n" + 
+				"											      <span class=\"custom-control-description\">Pontualidade</span>\r\n" + 
+				"											</label>\r\n" + 
+				"										</div>\r\n" + 
+				"									</div>\r\n" + 
+				"									<div class=\"row\">\r\n" + 
+				"				    					<div class=\"col\">	\r\n" + 
+				"				    						<label class=\"custom-control custom-checkbox\">\r\n" + 
+				"											      <input type=\"checkbox\" class=\"custom-control-input\" name=\"anot_domingo_"+this.id+"\" id=\"anot_domingoId_"+this.id+"\">\r\n" + 
+				"											      <span class=\"custom-control-indicator\"></span>\r\n" + 
+				"											      <span class=\"custom-control-description\">Anotacao Domingo</span>\r\n" + 
+				"											</label>\r\n" + 
+				"										</div>\r\n" + 
+				"										<div class=\"col\">	\r\n" + 
+				"				    						<label class=\"custom-control custom-checkbox\">\r\n" + 
+				"											      <input type=\"checkbox\" class=\"custom-control-input\" name=\"anot_arena_"+this.id+"\" id=\"anot_arenaId_"+this.id+"\">\r\n" + 
+				"											      <span class=\"custom-control-indicator\"></span>\r\n" + 
+				"											      <span class=\"custom-control-description\">Anotacao Arena</span>\r\n" + 
+				"											</label>\r\n" + 
+				"										</div>\r\n" + 
+				"									</div>\r\n" + 
+				"									<div class=\"row\">\r\n" + 
+				"				    					<div class=\"col\">	\r\n" + 
+				"				    						<label>Versiculos</label>\r\n" + 
+				"				    						<input type=\"number\" name=\"vers_"+this.id+"\" id=\"versId_"+this.id+"\">\r\n" + 
+				"										</div>\r\n" + 
+				"										<div class=\"col\">	\r\n" + 
 				"				    						<label>Pontos Extras</label>\r\n" + 
-				"			    						</div>\r\n" + 
-				"			    						<div class=\"col\">\r\n" + 
-				"				    						<input type=\"number\" id=\"vers_"+this.id+"\">\r\n" + 
+				"				    						<input type=\"number\" name=\"pe_"+this.id+"\" id=\"peId_"+this.id+"\">\r\n" + 
 				"										</div>\r\n" + 
 				"									</div>							\r\n" + 
 				"								</div>\r\n" + 
-				"							</li>\r\n";
+				"							</li>";
+	}
+
+	public int getId() {
+		return this.id;
 	}
 	
 
