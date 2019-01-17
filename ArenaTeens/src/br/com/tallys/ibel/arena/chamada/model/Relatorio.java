@@ -66,22 +66,14 @@ public abstract class Relatorio {
 	}
 	
 	
-	
 	public Date getData() {
 		return data;
-	}
-
-	public boolean isClosedBim() {
-		return closedBim;
 	}
 
 	public Fechamento getFechamentoBim() {
 		return fechamentoBim;
 	}
 
-	public boolean isClosed() {
-		return closed;
-	}
 
 	public Fechamento getFechamento() {
 		return fechamento;

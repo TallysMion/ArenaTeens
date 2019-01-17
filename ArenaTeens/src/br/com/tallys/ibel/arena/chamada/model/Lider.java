@@ -12,12 +12,6 @@ public class Lider extends User {
 	
 	//Verificar Métodos Nescessários
 
-	@Override
-	public String mainPage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public Lider(String login, String senha, String nome, int externalID, String telefone, Date nasc, Arena arena) {
 		super(login, senha, nome, UserType.Lider, externalID, telefone, nasc);
 		this.arena = arena;

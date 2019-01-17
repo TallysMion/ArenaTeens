@@ -15,11 +15,6 @@ public class Teens extends User {
 	
 	//Desenvolver Métodos
 	
-	@Override
-	public String mainPage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String toHTML(boolean page) {

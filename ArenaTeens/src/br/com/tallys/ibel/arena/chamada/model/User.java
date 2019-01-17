@@ -98,23 +98,11 @@ public abstract class User {
 		this.nasc = nasc;
 	}
 
-
-
-	//altera o nome do usuario
-	public boolean changeUsername(String newName) {
-		return false;
-	}
-	
-	//Altera o password do usuario
-	public boolean changePassword(String newPassword) {
-		return false;
-	}
 	
 	//Recupera o id do usuario
 	public abstract int getExtId();
 	
-	//Retorna a pagina do usuario
-	public abstract String mainPage();
+	
 	
 	//Retorna um HTML de referencia ao usuario
 	public abstract String toHTML();
